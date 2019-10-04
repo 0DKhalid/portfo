@@ -1,1 +1,1 @@
-web: gunicorn portfo:server
+web: gunicorn server:server

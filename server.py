@@ -7,10 +7,10 @@ app = Flask(__name__)
 # config db
 conf = yaml.load(open("config.yaml"))
 
-app.config["MYSQL_HOST"] = conf["mysql_host"]
-app.config["MYSQL_USER"] = conf["mysql_user"]
-app.config["MYSQL_PASSWORD"] = conf["mysql_password"]
-app.config["MYSQL_DB"] = conf["mysql_name"]
+app.config["MYSQL_HOST"] = conf['mysql_host']
+app.config["MYSQL_USER"] = conf['mysql_name']
+app.config["MYSQL_PASSWORD"] = conf['mysql_password']
+app.config["MYSQL_DB"] = conf['mysql_name']
 
 mysql = MySQL(app)
 
@@ -60,11 +60,16 @@ def submit_form():
 @app.route("/<string:admin>/<int:password>")
 def get_data(admin, password):
 
-    if admin == conf["url_name"] and password == conf["url_password"]:
+    if admin == conf['url_name'] and password == conf['url_password']:
         cur = mysql.connection.cursor()
         resultValue = cur.execute("SELECT * FROM Contacts")
         if resultValue > 0:
             userData = cur.fetchall()
+            cur.close()
             return render_template("people.html", userData=userData)
     return "Somthing worng went"
 
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()

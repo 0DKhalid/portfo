@@ -16,13 +16,13 @@ I use MySQL database hosted in [remotemysql.com](https://remotemysql.com) this w
 
 ##### After You create database:
 
-1. create yaml file like this:
+1. create yaml file and inside it put this config:
    > mysql_host: 'Your_Database_host'\
    > mysql_password: 'Your_Database_Password'\
    > mysql_name: 'Your_Database_name'\
    > mysql_user: 'Your_Database_User'\
    > url_name: 'Any_String' #like 'khalid'\
-   > url_password: 'Any_namber' #like 12321\
+   > url_password: 'Any_namber' #like 12321
 
 **url_name and url_password**:
 To fetch all messages that send through contact page when you visit this path `http://localhost:5000/url_name/url_password`
